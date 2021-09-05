@@ -70,18 +70,28 @@ public class Turning extends LinearOpMode {
 
         leftMotor = hardwareMap.dcMotor.get("Left_Motor");
         rightMotor = hardwareMap.dcMotor.get("Right_Motor");
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
+        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
+
+        leftDrive.setDirection(DcMotor.Direction.FORWARD);
+        rightDrive.setDirection(DcMotor.Direction.REVERSE);
 
         waitForStart();
         runtime.reset();
 
-        leftMotor.setPower(-power);
-        rightMotor.setPower(power);
+        leftMotor.setPower(-0.5);
+        rightMotor.setPower(0.5);
+        leftDrive.setPower(-0.5);
+        rightDrive.setPower(0.5);
 
         sleep(10000);
 
         power = 0.0;
 
-        leftMotor.setPower(power);
-        rightMotor.setPower(power);
+        leftMotor.setPower(0.0);
+        rightMotor.setPower(0.0);
+        leftDrive.setPower(0.0);
+        rightDrive.setPower(0.0);
     }}
